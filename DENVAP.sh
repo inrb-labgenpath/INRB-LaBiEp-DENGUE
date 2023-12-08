@@ -13,8 +13,13 @@ cd ..
 snakemake -j1 -c10 -s visualization_bf.smk;
 snakemake -j1 -c10 -s visualization_af.smk;
 
+cd index;
+cat human* > human_genome_GRCh38.fna.gz;
+rm -rf human_genome_GRCh38.fna.gz_*;
+cd ..
+
 cd trimmed_reads;
-for i in *.fastq; do minimap2 -a -x map-ont -t 10 ../index/GCA_000001405.15_GRCh38_no_alt_plus_hs38d1_analysis_set.fna.gz `echo ${i:0:29}`.fastq -o ../mapping/`echo ${i:0:29}`.bam; done ; 
+for i in *.fastq; do minimap2 -a -x map-ont -t 10 ../index/human_genome_GRCh38.fna.gz `echo ${i:0:29}`.fastq -o ../mapping/`echo ${i:0:29}`.bam; done ; 
 cd .. 
 
 cd mapping;
