@@ -1,4 +1,4 @@
-name: DENVAP
+name: denvap
 channels:
   - conda-forge
   - bioconda
