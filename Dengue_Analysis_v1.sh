@@ -1,6 +1,6 @@
 #! usr/bin/bash
 
-mkdir {bams,consensus,dengue_reads,human_reads,index,mapping,non_dengue_reads,non_human_reads,reads,trimmed_reads,visualization_af,visualization_bf} &&
+mkdir {bams,consensus,dengue_reads,human_reads,index,mapping,non_dengue_reads,non_human_reads,reads,trimmed_reads,visualization_af,visualization_bf,results_dengue} &&
 
 cd fastq;
 for file in *barcode*; do cat $file/*.fastq > `echo $file`.fastq | chmod +x `echo $file`.fastq;done && 
@@ -73,7 +73,7 @@ cd consensus;
 bash ../coverage/coverage_fasta.sh; cat *.fa > dengue_run_`echo date`.fasta &&
 cd ..
 
-mkdir results_dengue; zip results_dengue_run_`echo date` {bams,dengue_reads,human_reads,mapping,non_dengue_reads,non_human_reads,reads,trimmed_reads,visualization_af,visualization_bf} | mv results_dengue_run_* results_dengue;
+zip results_dengue_run_`echo date` {bams,dengue_reads,human_reads,mapping,non_dengue_reads,non_human_reads,reads,trimmed_reads,visualization_af,visualization_bf} | mv results_dengue_run_* results_dengue;
 mv consensus results_dengue; rm -rf {bams,consensus,dengue_reads,human_reads,mapping,non_dengue_reads,non_human_reads,reads,trimmed_reads,visualization_af,visualization_bf}; rm -rf fastq/*
 
 
