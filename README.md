@@ -1,5 +1,5 @@
 # INRB-LaBiEp-DENGUE
-*This folder contains codes to analyse dengue reads from nanopore platfrom*
+*This folder contains codes to analyse dengue reads from nanopore platfrom for the outbreak in CHAD*
 *The Pipeline is named DENVAP : Dengue Virus Analysis Pipeline*
 ## Installation of **DENVAP**
 *The installation is very simple but requires some requisites*
@@ -25,7 +25,8 @@ conda install -c conda-forge mamba
 git clone https://github.com/inrb-labgenpath/INRB-LaBiEp-DENGUE.git
 ```
 ```
-chmod u+x {*yaml,*sh,*smk}
+cd INRB-LaBiEp-DENGUE
+chmod u+x {*yaml,*sh,*smk,*.py}
 mamba env create -f DENVAP.yaml
 ```
 
