@@ -28,3 +28,13 @@ git clone https://github.com/inrb-labgenpath/INRB-LaBiEp-DENGUE.git
 chmod u+x {*yaml,*sh,*smk}
 mamba env create -f DENVAP.yaml
 ```
+## Usage
+>*1. Load the reads*
+*Load your reads in the fastq folder, make sure your barcode name 24 characters*
+*barcode01 ---> XXXXXXXXXXXXXX_barcode01*
+*e.g: barcode01 ---> 23-COG-DENV001_barcode01*
+*You hope to let you use whatever length you want the next version of the pipeline*
+>*2. Run the script*
+```
+bash --verbose DENVAP.sh
+```
