@@ -22,4 +22,8 @@ conda install -c conda-forge mamba
 ```
 >  *3. DENVAP:*
 ```
-git clone 
+git clone https://github.com/inrb-labgenpath/INRB-LaBiEp-DENGUE.git
+```
+```
+mamba env create -f DENVAP.yaml
+```
