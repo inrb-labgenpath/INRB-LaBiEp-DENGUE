@@ -42,7 +42,7 @@ mamba env create -f DENVAP.yaml
 > *2. Run the script*
 
 ```
-conda activate DENVAP
+conda activate denvap
 ```
 ```
 bash --verbose DENVAP.sh
