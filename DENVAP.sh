@@ -73,12 +73,13 @@ cd ..
 
 cd bams;
 for i in *barcode*/*.fa ; do cp -r $i ../consensus/; done ; 
+cat *fa > all_consensus_`date`.fasta
 cd ..
 
 cp fasta-coverage.py coverage.tsv -t consensus;
 cd consensus;
-python fasta-coverage.py ;
+python fasta-coverage.py all_consensus* > coverage.tsv;
 cd ..
 
-zip results_dengue_run_`echo date` {bams,dengue_reads,human_reads,mapping,non_dengue_reads,non_human_reads,reads,trimmed_reads,visualization_af,visualization_bf}/* | mv results_dengue_run_* results_dengue;
+zip results_dengue_run_`date` {bams,dengue_reads,human_reads,mapping,non_dengue_reads,non_human_reads,reads,trimmed_reads,visualization_af,visualization_bf}/* | mv results_dengue_run_* results_dengue;
 mv consensus results_dengue; rm -rf {bams,consensus,dengue_reads,human_reads,mapping,non_dengue_reads,non_human_reads,reads,trimmed_reads,visualization_af,visualization_bf}; rm -rf fastq/*
