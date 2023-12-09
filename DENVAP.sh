@@ -70,13 +70,15 @@ cd bams;
 for i in *; do samtools mpileup -aa -A -Q 0 -d 0 $i/$i.trimmed.rg.sorted.bam | ivar consensus -p $i/$i.fa -m 10 -n N -t 0.5; done ; 
 cd .. 
 
+
 cd bams;
 for i in *barcode*/*.fa ; do cp -r $i ../consensus/; done ; 
 cd ..
 
+cp fasta-coverage.py coverage.tsv -t consensus;
 cd consensus;
 python fasta-coverage.py ;
 cd ..
 
-zip results_dengue_run_`echo date` {bams,dengue_reads,human_reads,mapping,non_dengue_reads,non_human_reads,reads,trimmed_reads,visualization_af,visualization_bf} | mv results_dengue_run_* results_dengue;
+zip results_dengue_run_`echo date` {bams,dengue_reads,human_reads,mapping,non_dengue_reads,non_human_reads,reads,trimmed_reads,visualization_af,visualization_bf}/* | mv results_dengue_run_* results_dengue;
 mv consensus results_dengue; rm -rf {bams,consensus,dengue_reads,human_reads,mapping,non_dengue_reads,non_human_reads,reads,trimmed_reads,visualization_af,visualization_bf}; rm -rf fastq/*
