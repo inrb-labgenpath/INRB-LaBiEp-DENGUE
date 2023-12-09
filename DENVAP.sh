@@ -1,6 +1,6 @@
 #! usr/bin/bash
 
-mkdir {bams,consensus,dengue_reads,human_reads,index,mapping,non_dengue_reads,non_human_reads,reads,trimmed_reads,visualization_af,visualization_bf,results_dengue} ;
+mkdir {bams,consensus,dengue_reads,human_reads,mapping,non_dengue_reads,non_human_reads,reads,trimmed_reads,visualization_af,visualization_bf,results_dengue} ;
 
 cd fastq;
 for file in *barcode*; do cat $file/*.fastq > `echo $file`.fastq | chmod +x `echo $file`.fastq;done ; 
@@ -14,7 +14,7 @@ snakemake -j1 -c10 -s visualization_bf.smk;
 snakemake -j1 -c10 -s visualization_af.smk;
 
 cd index;
-cat human* > human_genome_GRCh38.fna.gz;
+cat human* > human_genome_GRCh38.fna.gz &&
 rm -rf human_genome_GRCh38.fna.gz_*;
 cd ..
 
@@ -72,14 +72,14 @@ cd ..
 
 
 cd bams;
-for i in *barcode*/*.fa ; do cp -r $i ../consensus/; done ; 
-cat *fa > all_consensus_`date`.fasta
+for i in */*.fa ; do cp -r $i ../consensus/; done ; 
 cd ..
 
 cp fasta-coverage.py coverage.tsv -t consensus;
 cd consensus;
+cat *.fa > all_consensus.fasta
 python fasta-coverage.py all_consensus* > coverage.tsv;
 cd ..
 
-zip results_dengue_run_`date` {bams,dengue_reads,human_reads,mapping,non_dengue_reads,non_human_reads,reads,trimmed_reads,visualization_af,visualization_bf}/* | mv results_dengue_run_* results_dengue;
-mv consensus results_dengue; rm -rf {bams,consensus,dengue_reads,human_reads,mapping,non_dengue_reads,non_human_reads,reads,trimmed_reads,visualization_af,visualization_bf}; rm -rf fastq/*
+zip `date +"%F"`.zip {bams,dengue_reads,human_reads,mapping,non_dengue_reads,non_human_reads,reads,trimmed_reads,visualization_af,visualization_bf,consensus}/*; mv *.zip results_dengue;
+rm -rf {bams,consensus,dengue_reads,human_reads,mapping,non_dengue_reads,non_human_reads,reads,trimmed_reads,visualization_af,visualization_bf}; rm -rf fastq/*
