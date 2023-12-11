@@ -48,7 +48,7 @@ conda activate denvap
 bash --verbose DENVAP.sh
 ```
 > *3. Reset the folder*
-*Make sure you save in another folder all the analysis, got to the INRB-LaBiEp-DENGUE location
+*Make sure you save in another folder all the analysis, go to the INRB-LaBiEp-DENGUE location
 ```
 rm -rf ./*
 git reset --hard f51cf82ed78453506d63877cdd8ba4aaf795b622
