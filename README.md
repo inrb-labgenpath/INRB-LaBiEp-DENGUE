@@ -51,7 +51,7 @@ bash --verbose DENVAP.sh
 *Make sure you save in another folder all the analysis, go to the INRB-LaBiEp-DENGUE location
 ```
 rm -rf ./*
-git reset --hard f51cf82ed78453506d63877cdd8ba4aaf795b622
+git reset --hard e33ce9964b78710560c2f3bdfee7818f11312cd0
 ```
 
 
