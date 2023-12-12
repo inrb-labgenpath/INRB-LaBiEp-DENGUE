@@ -22,7 +22,7 @@ conda install -c conda-forge mamba
 ```
 >  *3. DENVAP:*
 ```
-git clone https://github.com/inrb-labgenpath/INRB-LaBiEp-DENGUE.git
+git clone --recursive https://github.com/inrb-labgenpath/INRB-LaBiEp-DENGUE.git
 ```
 ```
 cd INRB-LaBiEp-DENGUE
